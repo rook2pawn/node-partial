@@ -33,3 +33,5 @@ both can be used like so:
 
 	baz(4); // 10
 	baz2(4); // 10
+
+partial was inspired (and partially lifted some code) by [partial/curry library ap - substack](https://github.com/substack/node-ap)
