@@ -34,4 +34,11 @@ both can be used like so:
 	baz(4); // 10
 	baz2(4); // 10
 
+Right side partial function application is through .rapply i.e.
+
+	var bar = partial.rapply(foo);
+	var baz = bar(3,7); // y = 3, z = 7
+	
+	baz(2); // (2*3) + 7 = 13
+
 partial was inspired (and partially lifted) by [partial/curry library ap - substack](https://github.com/substack/node-ap)
