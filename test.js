@@ -4,13 +4,26 @@ var m3 = function(x,y,z) {
 };
 
 var foo = partial(m3);
-console.log(foo(2,3,4)); // 10
-console.log(foo(2,3)(4)); //10
-
-var bar = foo(2,3);
-console.log(bar(4)); // 10
-
-
 var baz = partial.rapply(m3);
-var baz2 = baz(3,7); // y = 3, z = 7
-console.log(baz2(2)); // x = 2
+
+// test that you have a function
+exports.testfn = function(test) {
+	test.expect(2);
+	test.equal('function',typeof foo);
+	test.equal('function',typeof baz);
+	test.done();
+};
+exports.testpartial = function(test) {
+	test.expect(3);
+	test.equal(10,foo(2,3,4));
+	test.equal(10,foo(2,3)(4)); 
+	test.equal(foo(2,3,4),foo(2,3)(4)); 
+	test.done();
+}
+exports.testpartialRight = function(test){
+	test.expect(3);
+	test.equal(10,baz(2,3,4));
+	test.equal(10,baz(4)(2,3));
+	test.equal(baz(2,3,4),baz(4)(2,3)); 
+	test.done();
+}
