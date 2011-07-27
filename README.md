@@ -41,4 +41,24 @@ Right side partial function application is through .rapply i.e.
 	
 	baz(2); // (2*3) + 7 = 13
 
+testing
+=======
+
+testing results (nodeunit):
+
+	$ nodeunit *
+
+	advanced.js
+	✔ testfn
+	✔ testpartial
+	✔ testpartialRight
+
+	basic.js
+	✔ testfn
+	✔ testpartial
+	✔ testpartialRight
+
+	OK: 16 assertions (62ms)
+
+
 partial was inspired (and partially lifted) by [partial/curry library ap - substack](https://github.com/substack/node-ap)
