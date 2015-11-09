@@ -1,6 +1,6 @@
 var exports = module.exports = function() {
 	var fn = arguments[0];	
-	var args = [].concat.apply([],arguments).slice(1);
+	var args = [].slice.call(arguments, 1);
 	return function() {
 		if ((arguments.length + args.length) >= fn.length) {
 			return fn.apply(fn, [].concat.apply(args,arguments));
@@ -12,7 +12,7 @@ var exports = module.exports = function() {
 
 exports.rapply = function() {
 	var fn = arguments[0];	
-	var args = [].concat.apply([],arguments).slice(1);
+	var args = [].slice.call(arguments, 1);
 	return function() {
 		var right = [].concat.apply([],arguments);
 		if ((arguments.length + args.length) >= fn.length) {
