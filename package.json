@@ -2,13 +2,18 @@
   "author": "David Wee <rook2pawn@gmail.com> (http://rook2pawn.com)",
   "name": "partial",
   "description": "partial function application - transform f into its partial by partial(f)",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "homepage": "https://github.com/rook2pawn/node-partial",
+  "scripts": {
+    "test": "tape test/test*.js"
+  },
   "repository": {
     "type": "git",
     "url": "git://github.com/rook2pawn/node-partial.git"
   },
   "main": "index.js",
   "dependencies": {},
-  "devDependencies": {}
+  "devDependencies": {
+    "tape": "^4.5.1"
+  }
 }
