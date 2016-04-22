@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/rook2pawn/node-partial.svg?branch=master)](https://travis-ci.org/rook2pawn/node-partial)
+
 partial
 =======
 
