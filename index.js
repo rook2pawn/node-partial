@@ -1,24 +1,29 @@
-var exports = module.exports = function() {
-	var fn = arguments[0];	
-	var args = [].concat.apply([],arguments).slice(1);
+var partial = function() {
+  var _args = Array.from(arguments);
+	var fn = _args[0];
+  var args = _args.slice(1);
 	return function() {
-		if ((arguments.length + args.length) >= fn.length) {
-			return fn.apply(fn, [].concat.apply(args,arguments));
+		if (arguments.length + args.length >= fn.length) {
+      var x = args.concat(Array.from(arguments));
+			return fn(...x);
 		} else {	
-			return exports(fn,[].concat.apply(args,arguments));
+      var x = args.concat(Array.from(arguments));
+			return partial(fn,...x)
 		}
 	};
 };
-
-exports.rapply = function() {
-	var fn = arguments[0];	
-	var args = [].concat.apply([],arguments).slice(1);
+partial.rapply = function() {
+  var _args = Array.from(arguments);
+	var fn = _args[0];
+  var args = _args.slice(1);
 	return function() {
-		var right = [].concat.apply([],arguments);
 		if ((arguments.length + args.length) >= fn.length) {
-			return fn.apply(fn, [].concat.apply(right,args));
+      var x = Array.from(arguments).concat(args);
+			return fn(...x);
 		} else {	
-			return exports.rapply(fn,[].concat.apply(right,args));
+      var x = Array.from(arguments).concat(args);
+			return partial.rapply(fn,...x);
 		}
 	};
 };
+var exports = module.exports = partial;

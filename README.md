@@ -42,25 +42,3 @@ Right side partial function application is through .rapply i.e.
 	var baz = bar(3,7); // y = 3, z = 7
 	
 	baz(2); // (2*3) + 7 = 13
-
-testing
-=======
-
-testing results (nodeunit):
-
-	$ nodeunit *
-
-	advanced.js
-	✔ testfn
-	✔ testpartial
-	✔ testpartialRight
-
-	basic.js
-	✔ testfn
-	✔ testpartial
-	✔ testpartialRight
-
-	OK: 16 assertions (62ms)
-
-
-partial was inspired (and partially lifted) by [partial/curry library ap - substack](https://github.com/substack/node-ap)
