@@ -1,29 +1,19 @@
-var partial = function() {
-  var _args = Array.from(arguments);
-	var fn = _args[0];
-  var args = _args.slice(1);
-	return function() {
-		if (arguments.length + args.length >= fn.length) {
-      var x = args.concat(Array.from(arguments));
-			return fn(...x);
-		} else {	
-      var x = args.concat(Array.from(arguments));
-			return partial(fn,...x)
-		}
-	};
-};
-partial.rapply = function() {
-  var _args = Array.from(arguments);
-	var fn = _args[0];
-  var args = _args.slice(1);
-	return function() {
-		if ((arguments.length + args.length) >= fn.length) {
-      var x = Array.from(arguments).concat(args);
-			return fn(...x);
-		} else {	
-      var x = Array.from(arguments).concat(args);
-			return partial.rapply(fn,...x);
-		}
-	};
-};
+const partial = function(fn, ...args) {
+  return function (...newArgs) {
+    if (args.length + newArgs.length >= fn.length) {
+      return fn(...(args.concat(newArgs)))
+    } else {
+      return partial(fn, ...(args.concat(newArgs)))
+    }
+  }
+}
+partial.rapply = function(fn, ...args) {
+  return function (...newArgs) {
+    if (args.length + newArgs.length >= fn.length) {
+      return fn(...(newArgs.concat(args)))
+    } else {
+      return partial.rapply(fn, ...(newArgs.concat(args)))
+    }
+  }
+}
 var exports = module.exports = partial;

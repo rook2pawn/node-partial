@@ -44,7 +44,7 @@ test('test partial with arrays for arguments', function(t) {
     return {one:logOne, two:logTwo}
   };
   var foo = partial(m, ['a','b','c']);
-  var result = foo('done'); 
+  var result = foo('done');
   t.equal(typeof foo, 'function')
   t.deepEqual(result, {one:['a','b','c'], two:'done'})
 })
