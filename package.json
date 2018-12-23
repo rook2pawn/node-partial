@@ -5,7 +5,8 @@
   "version": "0.0.6",
   "homepage": "https://github.com/rook2pawn/node-partial",
   "scripts": {
-    "test": "tape test/test*.js"
+    "coverage": "nyc report --reporter=text-lcov | coveralls",
+    "test": "nyc tape test/test*.js"
   },
   "repository": {
     "type": "git",
@@ -14,6 +15,8 @@
   "main": "index.js",
   "dependencies": {},
   "devDependencies": {
+    "coveralls": "^3.0.2",
+    "nyc": "^13.1.0",
     "tape": "^4.6.3"
   }
 }
